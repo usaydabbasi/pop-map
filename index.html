@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Global Growth by Country</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Mapbox library -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+
+    <!-- Turf.js -->
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Page title -->
+    <div class="header">
+        <h1>Population Growth Rate by Country: 1950–2023</h1>
+    </div>
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Control panel on top of the map -->
+    <div class="map-overlay">
+        <h2>Data Controls</h2>
+
+        <!-- Country dropdown search -->
+        <div class="session">
+            <label>Search Country</label>
+            <select id="country-search">
+                <option value="">Select a country...</option>
+            </select>
+        </div>
+
+        <!-- Year slider -->
+        <div class="session">
+            <label>Year: <span id="active-year">2023</span></label>
+            <input id="slider" type="range" min="1950" max="2023" step="1" value="2023">
+        </div>
+
+        <!-- Tool selection buttons -->
+        <div class="session">
+            <label>Analysis Tools</label>
+            <div class="mode-group">
+                <button id="mode-area" class="mode-btn active">Area Info</button>
+                <button id="mode-dist" class="mode-btn">Distance Ruler</button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr>
+
+        <!-- Legend -->
+        <div id="legend">
+            <div class="legend-item">
+                <span class="legend-key" style="color:#5fdf5f">▲</span> Growth (&gt; 0.1%)
+            </div>
+            <div class="legend-item">
+                <span class="legend-key" style="color:#888">—</span> Neutral
+            </div>
+            <div class="legend-item">
+                <span class="legend-key" style="color:#ff5f5f">▼</span> Decline (&lt; -0.1%)
+            </div>
+        </div>
+
+        <!-- Reset button -->
+        <button id="reset-btn">Clear Map</button>
+    </div>
+
+    <!-- Information -->
+    <div class="about-box">
+        <h2>About This Map</h2>
+        <p>
+            This dashboard displays annual population growth rates by country from 1950 to 2023.
+            Use the timeline slider to move through the decades, click any country to see its land area,
+            or switch to Distance Ruler to measure the distance between any two points on Earth.
+        </p>
+    </div>
+
+    <!-- Bottom timeline controls -->
+    <div class="footer">
+
+        <!-- Play button for animation -->
+        <button id="play-btn" title="Play">
+            <svg id="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="white">
+                <polygon points="3,1 13,7 3,13"/>
+            </svg>
+        </button>
+
+        <!-- Timeline labels -->
+        <span class="footer-year-label">1950</span>
+
+        <!-- Bottom slider -->
+        <input id="footer-slider" type="range" min="1950" max="2023" step="1" value="2023">
+
+        <span class="footer-year-label">2023</span>
+
+        <!-- Current year display -->
+        <span id="footer-active-year">2023</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
