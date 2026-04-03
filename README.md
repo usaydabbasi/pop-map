@@ -33,6 +33,6 @@ pop-map/
 
 ## Data
 
-- Population growth rate data spans*1950–2023, acquired from the [UN World Population Prospects](https://population.un.org/wpp/) dataset.
+- Population growth rate data spans 1950–2023, acquired from the [UN World Population Prospects](https://population.un.org/wpp/) dataset.
 - Country geometries are stored in `countries_cleaned.geojson` (polygon boundaries).
 - `country_points.geojson` stores centroid coordinates used for the country search and label placement.
