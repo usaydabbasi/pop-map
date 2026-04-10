@@ -26,6 +26,7 @@ map.on('load', () => {
     loadCountryDropdown();
     bindSlider();
     bindModeButtons();
+    bindProjectionButtons();
     bindMapClick();
     bindResetButton();
     bindCursor();
@@ -215,6 +216,21 @@ function setActiveMode(activeId) {
         document.getElementById(id).className =
             'mode-btn' + (id === activeId ? ' active' : '');
     });
+}
+
+// Switch between globe and flat projections
+function bindProjectionButtons() {
+    document.getElementById('proj-globe').onclick = () => {
+        map.setProjection('globe');
+        document.getElementById('proj-globe').className = 'mode-btn active';
+        document.getElementById('proj-flat').className = 'mode-btn';
+    };
+
+    document.getElementById('proj-flat').onclick = () => {
+        map.setProjection('mercator');
+        document.getElementById('proj-flat').className = 'mode-btn active';
+        document.getElementById('proj-globe').className = 'mode-btn';
+    };
 }
 
 // Handle map clicks
